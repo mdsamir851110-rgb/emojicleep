@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b18">
+  <meta name="description" content="Turn messages into your own emoji code and decode them again.">
+  <title>Emoji Cipher — Your message, your code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="sky-glow"></div>
+    <div class="moon"></div>
+    <div class="speed-lines"></div>
+    <div class="mountain mountain-back"></div>
+    <div class="mountain mountain-front"></div>
+
+    <div class="hero">
+      <span class="hero-cape"></span>
+      <span class="hero-body"></span>
+      <span class="hero-head"></span>
+      <span class="hero-sword"></span>
+    </div>
+
+    <div class="energy energy-one"></div>
+    <div class="energy energy-two"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Emoji Cipher home">
+      <span class="brand-mark">✳</span>
+      <span>emoji<span class="brand-light">cipher</span></span>
+    </a>
+
+    <div class="topbar-note">
+      <span class="live-dot"></span> YOUR WORDS. YOUR SECRET CODE.
+    </div>
+
+    <a class="github-link" href="#cipher">
+      LET'S GO <span aria-hidden="true">↘</span>
+    </a>
+  </header>
+
+  <main id="cipher">
+
+    <section class="intro">
+      <div class="eyebrow">
+        <span>✦</span> A LITTLE MAGIC FOR YOUR MESSAGES
+      </div>
+
+      <h1>Say it in<br><span>emoji.</span></h1>
+
+      <p class="intro-copy">
+        Your message, remixed into a code only you can read.<br class="desktop-break">
+        Pick your emoji set and let the secret-telling begin.
+      </p>
+    </section>
+
+    <section class="cipher-card" aria-label="Emoji message encoder and decoder">
+
+      <div class="card-top">
+
+        <div class="mode-switch" role="tablist" aria-label="Message mode">
+
+          <button
+            class="mode-button active"
+            id="encode-tab"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="message-input"
+            data-mode="encode">
+            <span>✎</span> Encode
+          </button>
+
+          <button
+            class="mode-button"
+            id="decode-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="message-input"
+            data-mode="decode">
+            <span>⌘</span> Decode
+          </button>
+
+        </div>
+
+        <label class="theme-picker">
+          <span>EMOJI SET</span>
+
+          <select id="theme-select" aria-label="Choose an emoji set">
+            <option value="cosmic">🌙 Cosmic</option>
+            <option value="nature">🌿 Wild nature</option>
+            <option value="sweet">🍓 Sweet things</option>
+          </select>
+        </label>
+
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="editor-panel">
+
+          <div class="panel-heading">
+            <label for="message-input" id="input-label">
+              YOUR MESSAGE
+            </label>
+
+            <span class="input-hint" id="input-hint">
+              WRITE A SECRET
+            </span>
+          </div>
+
+          <textarea
+            id="message-input"
+            placeholder="Type something lovely..."
+            maxlength="1000"
+            spellcheck="false"></textarea>
+
+          <div class="input-footer">
+            <span id="char-count">0 / 1000</span>
+
+            <button
+              class="text-button"
+              id="clear-button"
+              type="button">
+              Clear <span>×</span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="transform-column" aria-hidden="true">
+          <span class="transform-orbit">✳</span>
+          <span class="transform-line"></span>
+        </div>
+
+        <div class="editor-panel output-panel">
+
+          <div class="panel-heading">
+
+            <span id="output-label">
+              YOUR EMOJI CODE
+            </span>
+
+            <span class="output-status">
+              <span class="live-dot"></span>
+              <span id="status-text">READY</span>
+            </span>
+
+          </div>
+
+          <div
+            class="output-box"
+            id="message-output"
+            aria-live="polite">
+            Your emoji code will appear here...
+          </div>
+
+          <div class="input-footer">
+
+            <span id="output-count">
+              0 symbols
+            </span>
+
+            <button
+              class="text-button copy-button"
+              id="copy-button"
+              type="button"
+              disabled>
+              Copy <span>▣</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card-bottom">
+
+        <div class="tip">
+          <span class="tip-icon">✦</span>
+
+          <span id="mode-tip">
+            Each letter gets its own emoji. Same emoji set = same secret code.
+          </span>
+        </div>
+
+        <button
+          class="action-button"
+          id="action-button"
+          type="button">
+
+          <span id="action-label">
+            Turn into emoji
+          </span>
+
+          <span class="action-arrow">↗</span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <section
+      class="how-it-works"
+      aria-label="How emoji cipher works">
+
+      <span class="how-label">
+        THE SECRET RECIPE
+      </span>
+
+      <div class="steps">
+
+        <div class="step">
+          <span class="step-number">01</span>
+          <span class="step-icon">✍️</span>
+
+          <span class="step-copy">
+            <strong>Write it</strong>
+            <small>Type your message</small>
+          </span>
+        </div>
+
+        <span class="step-arrow">→</span>
+
+        <div class="step">
+          <span class="step-number">02</span>
+          <span class="step-icon">🎨</span>
+
+          <span class="step-copy">
+            <strong>Pick your set</strong>
+            <small>Choose your emoji vibe</small>
+          </span>
+        </div>
+
+        <span class="step-arrow">→</span>
+
+        <div class="step">
+          <span class="step-number">03</span>
+          <span class="step-icon">🪄</span>
+
+          <span class="step-copy">
+            <strong>Keep it secret</strong>
+            <small>Decode it whenever</small>
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>
+      MADE FOR YOUR LITTLE SECRETS <span>✳</span>
+      NO MESSAGE IS SENT OR SAVED
+    </footer>
+
+  </main>
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite">
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
